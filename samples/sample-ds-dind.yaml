@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: sample-prepull
+spec:
+  selector:
+    matchLabels:
+      app: sample-prepull
+  template:
+    metadata:
+      labels:
+        app: sample-prepull
+    spec:
+      containers:
+      - name: sample-prepull
+        image: host.docker.internal:5000/docker-for-crictl:0.0.1
+        command: ["/bin/sh", "-c"]
+        args: ["crictl pull mysql; sleep 3600"]
+#        command: ["crictl", "pull", "hello-world:latest"]
+#        command: ["sleep", "3600"]
+        volumeMounts:
+          - name: docker
+            mountPath: /run/
+      volumes:
+      - name: docker
+        hostPath:
+          path: /var/run/
