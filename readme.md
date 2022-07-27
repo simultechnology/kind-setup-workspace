@@ -73,8 +73,11 @@ docker push 127.0.0.1:5000/docker-for-crictl:0.0.1
 kubectl apply -f sample-ds-dind.yaml
 ```
 
+## Reference
 
+### document of Kind 
 
+[https://kind.sigs.k8s.io/docs/user/quick-start/](https://kind.sigs.k8s.io/docs/user/quick-start/)
 
 
 
