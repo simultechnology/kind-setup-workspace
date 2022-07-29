@@ -63,6 +63,8 @@ docker pull host.docker.internal:5000/your-image:0.0.1
 
 build docker image from Dockerfile and push it to local registry
 
+### commands
+
 ```bash
 cd samples/
 docker build -t docker-for-crictl:0.0.1 . --network=host
@@ -72,6 +74,9 @@ docker push 127.0.0.1:5000/docker-for-crictl:0.0.1
 # create Daemonset on this kind cluster
 kubectl apply -f sample-ds-dind.yaml
 ```
+### overview
+
+![overview](images/overview.svg)
 
 ## Reference
 
