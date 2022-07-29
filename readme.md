@@ -76,7 +76,7 @@ kubectl apply -f sample-ds-dind.yaml
 ```
 ### overview
 
-![overview](images/overview.svg)
+![overview](images/overview.png)
 
 ## Reference
 
