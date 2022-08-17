@@ -3,11 +3,12 @@ set -o errexit
 
 # create registry container unless it already exists
 reg_name='host.docker.internal'
-reg_port='5000'
+reg_port='55000'
 running="$(docker inspect -f '{{.State.Running}}' "${reg_name}" 2>/dev/null || true)"
 if [ "${running}" != 'true' ]; then
   docker run \
-    -d --restart=always -p "${reg_port}:5000" --name "${reg_name}" \
+    -e REGISTRY_HTTP_ADDR="0.0.0.0:${reg_port}" \
+    -d --restart=always -p "${reg_port}:${reg_port}" --name "${reg_name}" \
     registry:2
 fi
 
