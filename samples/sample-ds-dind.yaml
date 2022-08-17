@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: sample-prepull
-        image: host.docker.internal:5000/docker-for-crictl:0.0.1
+        image: host.docker.internal:55000/docker-for-crictl:0.0.1
         command: ["/bin/sh", "-c"]
         args: ["crictl pull mysql; sleep 3600"]
 #        command: ["crictl", "pull", "hello-world:latest"]
