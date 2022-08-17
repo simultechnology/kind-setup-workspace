@@ -42,21 +42,21 @@ make clean-v4
 
 #### see image lists
 
-[http://127.0.0.1:5000/v2/_catalog](http://127.0.0.1:5000/v2/_catalog)
+[http://127.0.0.1:55000/v2/_catalog](http://127.0.0.1:55000/v2/_catalog)
 
 #### push a Docker image to local registry
 
 ```bash
-docker tag your-image:0.0.1 127.0.0.1:5000/your-image:0.0.1
+docker tag your-image:0.0.1 127.0.0.1:55000/your-image:0.0.1
 
 ```
 
 #### pull the image from pods in kubernetes cluster
 
-you can access to 127.0.0.1:5000 registry on host by host.docker.internal:5000 in pods.
+you can access to 127.0.0.1:55000 registry on host by host.docker.internal:55000 in pods.
 
 ```bash
-docker pull host.docker.internal:5000/your-image:0.0.1
+docker pull host.docker.internal:55000/your-image:0.0.1
 ```
 
 ## Samples
@@ -68,8 +68,8 @@ build docker image from Dockerfile and push it to local registry
 ```bash
 cd samples/
 docker build -t docker-for-crictl:0.0.1 . --network=host
-docker tag docker-for-crictl:0.0.1 127.0.0.1:5000/docker-for-crictl:0.0.1
-docker push 127.0.0.1:5000/docker-for-crictl:0.0.1
+docker tag docker-for-crictl:0.0.1 127.0.0.1:55000/docker-for-crictl:0.0.1
+docker push 127.0.0.1:55000/docker-for-crictl:0.0.1
 
 # create Daemonset on this kind cluster
 kubectl apply -f sample-ds-dind.yaml

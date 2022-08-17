@@ -1,18 +1,18 @@
 
 .PHONY: setup-v6
-setup:
+setup-v6:
 	sh assets/kind/kind-v6-with-registry.sh ipv6-cluster
 
 .PHONY: setup-v4
-setup:
+setup-v4:
 	sh assets/kind/kind-v4-with-registry.sh ipv4-cluster
 
 .PHONY: clean-v6
-clean:
+clean-v6:
 	kind delete cluster --name ipv6-cluster
 
 .PHONY: clean-v4
-clean:
+clean-v4:
 	kind delete cluster --name ipv4-cluster
 
 .PHONY: clean
