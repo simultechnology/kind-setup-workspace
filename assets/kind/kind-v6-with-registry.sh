@@ -20,6 +20,8 @@ containerdConfigPatches:
 - |-
   [plugins."io.containerd.grpc.v1.cri".registry.mirrors."${reg_name}:${reg_port}"]
     endpoint = ["http://${reg_name}:${reg_port}"]
+  [plugins."io.containerd.grpc.v1.cri".registry.configs."ghcr.io".tls]
+    insecure_skip_verify = true
 networking:
   ipFamily: ipv6
   apiServerAddress: 127.0.0.1
