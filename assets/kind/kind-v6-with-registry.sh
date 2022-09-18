@@ -13,7 +13,7 @@ if [ "${running}" != 'true' ]; then
 fi
 
 # create a cluster with the local registry enabled in containerd
-cat <<EOF | kind create cluster --image kindest/node:v1.24.3 --name=$1 --config=-
+cat <<EOF | kind create cluster --image kindest/node:v1.25.0 --name=$1 --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 containerdConfigPatches:
