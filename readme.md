@@ -134,6 +134,12 @@ to access from your local environment, you can use port-forward
 kubectl port-forward -n kubeapps svc/kubeapps 8080:80
 ```
 
+## Memos
+
+Docker image of Kubernetes
+
+[https://github.com/kubernetes-sigs/kind/blob/main/images/base/Dockerfile](https://github.com/kubernetes-sigs/kind/blob/main/images/base/Dockerfile)
+
 ## Reference
 
 ### document of Kind 
