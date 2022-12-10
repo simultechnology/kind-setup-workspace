@@ -104,7 +104,7 @@ kubectl apply -f sample-ds-dind.yaml
 
 ### how to get values of etcd from local machine
 
-
+[docs/get-etcd-values.md](docs/get-etcd-values.md)
 
 ## Memos
 
