@@ -75,14 +75,14 @@ containerdConfigPatches:
     insecure_skip_verify = true
 ```
 
-## Samples
+### Examples
 
 build docker image from Dockerfile and push it to local registry
 
-### commands
+#### commands
 
 ```bash
-cd samples/
+cd examples/
 docker build -t docker-for-crictl:0.0.1 . --network=host
 docker tag docker-for-crictl:0.0.1 127.0.0.1:55000/docker-for-crictl:0.0.1
 docker push 127.0.0.1:55000/docker-for-crictl:0.0.1
@@ -90,63 +90,20 @@ docker push 127.0.0.1:55000/docker-for-crictl:0.0.1
 # create Daemonset on this kind cluster
 kubectl apply -f sample-ds-dind.yaml
 ```
-### overview
+#### overview
 
 ![overview](images/overview.png)
 
-## Dashboards
+## Samples
 
-you can use kubeapps
+### set up a dashboard 
+[docs/dash-boards.md](docs/dash-boards.md)
 
-[https://github.com/vmware-tanzu/kubeapps/blob/main/site/content/docs/latest/tutorials/getting-started.md](https://github.com/vmware-tanzu/kubeapps/blob/main/site/content/docs/latest/tutorials/getting-started.md)
+### set up JFrog artifactory
+[docs/jfrog-artifactory.md](docs/jfrog-artifactory.md)
 
-- install Kubeapps
+### how to get values of etcd from local machine
 
-```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
-kubectl create namespace kubeapps
-helm install kubeapps --namespace kubeapps bitnami/kubeapps
-```
-
-- Create a demo credential with which to access Kubeapps and Kubernetes
-
-```bash
-kubectl create --namespace default serviceaccount kubeapps-operator
-kubectl create clusterrolebinding kubeapps-operator --clusterrole=cluster-admin --serviceaccount=default:kubeapps-operator
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: Secret
-metadata:
-  name: kubeapps-operator-token
-  namespace: default
-  annotations:
-    kubernetes.io/service-account.name: kubeapps-operator
-type: kubernetes.io/service-account-token
-EOF
-```
-
-get the token required to log in this App from browser
-
-```bash
-kubectl get --namespace default secret kubeapps-operator-token -o go-template='{{.data.token | base64decode}}'
-```
-
-to access from your local environment, you can use port-forward
-
-```bash
-kubectl port-forward -n kubeapps svc/kubeapps 8080:80
-```
-
-
-## Creating JFrog artifactory
-
-```bash
-kubectl create ns ame
-helm repo add jfrog https://charts.jfrog.io/
-helm install -name artifactory jfrog/artifactory
-```
-
-[https://www.jfrog.com/confluence/display/JFROG/QuickStart+Guide%3A+Maven+and+Gradle](https://www.jfrog.com/confluence/display/JFROG/QuickStart+Guide%3A+Maven+and+Gradle)
 
 
 ## Memos
