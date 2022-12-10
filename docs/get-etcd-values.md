@@ -1,9 +1,9 @@
-# how to get values of etcd from local machine
+# how to get values of etcd pod from local machine
 
 ## install etcd on your machine
 
 
-### on root directroy of this project
+### on root directory of this project
 
 ```
 sh scripts/etcd-download.sh
@@ -20,7 +20,7 @@ mv /tmp/etcd-download-test/* ~/bin/
 ### 1. create a secret using the kubectl tool by querying the etcd server using the etcdctl CLI
 
 ```
-kubectl create secret generic db-secret2 \
+kubectl create secret generic db-secret \
 	--from-literal=username=devuser \
 	--from-literal=password=devpassword
 ```
@@ -40,7 +40,7 @@ etcd-ipv6-cluster-control-plane                      1/1     Running   0        
 ### 3. port forward to your local port
 
 ```
-kubectl port-forward -n kube-system etcd-ipv6-cluster-control-plane 2379:2379`
+kubectl port-forward -n kube-system etcd-ipv6-cluster-control-plane 2379:2379
 ```
 
 ### 4. copy the etcd certificates
@@ -66,7 +66,6 @@ Containers:
     Host Port:     <none>
     Command:
       etcd
-      --advertise-client-urls=https://[fc00:f853:ccd:e793::a]:2379
 		:
       --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
       --peer-key-file=/etc/kubernetes/pki/etcd/peer.key
@@ -76,7 +75,7 @@ Volumes:
     Type:          HostPath (bare host directory volume)
     Path:          /etc/kubernetes/pki/etcd
     HostPathType:  DirectoryOrCreate
-
+:
 ```
 
 Because this volume type is HostPath, you can get peer.crt and peer.key from Host Node.
